@@ -513,6 +513,8 @@
     .footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
   }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('ApRnB2SliN_hOUvwB');</script>
 </head>
 <body>
 
@@ -586,7 +588,7 @@
           <span class="amenity-tag">Wi-Fi無料</span>
           <span class="amenity-tag">冷蔵庫</span>
           <span class="amenity-tag">電子レンジ</span>
-          <span class="amenity-tag">空気清浄機</span>
+          <span class="amenity-tag">ドライヤー</span>
         </div>
         <div class="sofa-highlight">
           <div class="sofa-label">IN-ROOM SOFA</div>
@@ -609,7 +611,7 @@
           <span class="amenity-tag">Wi-Fi無料</span>
           <span class="amenity-tag">冷蔵庫</span>
           <span class="amenity-tag">電子レンジ</span>
-          <span class="amenity-tag">空気清浄機</span>
+          <span class="amenity-tag">ドライヤー</span>
         </div>
         <div class="sofa-highlight">
           <div class="sofa-label">IN-ROOM SOFA</div>
@@ -711,7 +713,7 @@
         <div>
           <div class="contact-info-label">電話番号</div>
           <div class="contact-info-value">0475-78-3732</div>
-          <div class="contact-info-sub">受付時間：9:00 〜 18:00</div>
+          <div class="contact-info-sub">受付時間：9:00 〜 17:30</div>
         </div>
       </div>
       <div class="contact-info-card">
@@ -726,17 +728,17 @@
     <div class="contact-box">
       <div class="form-row">
         <label class="form-label">お名前</label>
-        <input class="form-input" id="contact-name" type="text" placeholder="山田 太郎">
+        <input class="form-input" id="contact-name" name="name" type="text" placeholder="山田 太郎">
       </div>
       <div class="form-row">
         <label class="form-label">メールアドレス</label>
-        <input class="form-input" id="contact-email" type="email" placeholder="example@email.com">
+        <input class="form-input" id="contact-email" name="email" type="email" placeholder="example@email.com">
       </div>
       <div class="form-row">
         <label class="form-label">お問い合わせ内容</label>
-        <textarea class="form-textarea" id="contact-message" placeholder="ご質問・ご要望をご記入ください"></textarea>
+        <textarea class="form-textarea" id="contact-message" name="message" placeholder="ご質問・ご要望をご記入ください"></textarea>
       </div>
-      <button class="form-submit" onclick="sendContactForm()">送信する</button>
+      <button class="form-submit" id="contact-submit" onclick="sendContactForm()">送信する</button>
     </div>
     <script>
     function sendContactForm() {
@@ -747,9 +749,25 @@
         alert('すべての項目を入力してください。');
         return;
       }
-      var subject = encodeURIComponent('【お問い合わせ】' + name + ' 様より');
-      var body = encodeURIComponent('お名前: ' + name + '\nメールアドレス: ' + email + '\n\nお問い合わせ内容:\n' + message);
-      window.location.href = 'mailto:Hotel.hista@gmail.com?subject=' + subject + '&body=' + body;
+      var btn = document.getElementById('contact-submit');
+      btn.disabled = true;
+      btn.textContent = '送信中...';
+      emailjs.send('service_82yu7g2', 'template_7wcj6qc', {
+        name: name,
+        email: email,
+        message: message
+      }).then(function() {
+        alert('お問い合わせを送信しました。ありがとうございます。');
+        document.getElementById('contact-name').value = '';
+        document.getElementById('contact-email').value = '';
+        document.getElementById('contact-message').value = '';
+        btn.disabled = false;
+        btn.textContent = '送信する';
+      }, function(error) {
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+        btn.disabled = false;
+        btn.textContent = '送信する';
+      });
     }
     </script>
   </div>
