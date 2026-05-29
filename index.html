@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOTEL HIGH STANDARD</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Barlow:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #1a1a1a;
+    background: #fff;
+  }
+
+  /* ===================== NAV ===================== */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 40px;
+    border-bottom: 1px solid #e8e8e8;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: #111;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+  }
+  .nav-links a {
+    font-size: 12px;
+    color: #666;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+  }
+  .nav-links a:hover { color: #111; }
+
+  /* ===================== HERO ===================== */
+  .hero {
+    background: #111;
+    color: #fff;
+    padding: 88px 40px 80px;
+  }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 5px 16px;
+    margin-bottom: 28px;
+    color: rgba(255,255,255,0.65);
+  }
+  .hero-accent {
+    width: 36px;
+    height: 3px;
+    background: #cc2200;
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 18px;
+    letter-spacing: 0.02em;
+  }
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.8;
+    margin-bottom: 40px;
+    max-width: 480px;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: #cc2200;
+    color: #fff;
+    font-size: 13px;
+    padding: 13px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-right: 14px;
+    letter-spacing: 0.04em;
+  }
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.8);
+    font-size: 13px;
+    padding: 13px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+
+  /* ===================== SECTIONS ===================== */
+  .section { padding: 72px 40px; }
+  .section-alt { background: #f7f7f5; }
+  .section-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .section-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.8;
+    max-width: 560px;
+    margin-bottom: 44px;
+  }
+  .divider {
+    width: 36px;
+    height: 2px;
+    background: #cc2200;
+    margin: 0 0 36px;
+  }
+
+  /* ===================== FEATURES ===================== */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+  }
+  .feature-card {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 26px 22px;
+  }
+  .feature-icon {
+    width: 42px;
+    height: 42px;
+    background: #111;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    font-size: 20px;
+    color: #cc2200;
+  }
+  .feature-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .feature-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  /* ===================== ROOMS ===================== */
+  .room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .room-card {
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .room-img {
+    height: 160px;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 14px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.08em;
+  }
+  .room-count-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(204,34,0,0.9);
+    color: #fff;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .room-info { padding: 22px; }
+  .room-name {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .room-price {
+    font-size: 13px;
+    color: #cc2200;
+    margin-bottom: 18px;
+  }
+  .room-amenities-title {
+    font-size: 11px;
+    color: #999;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+  .amenity-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .amenity-tag {
+    font-size: 11px;
+    background: #f5f5f3;
+    border: 1px solid #e8e8e8;
+    border-radius: 20px;
+    padding: 4px 11px;
+    color: #555;
+  }
+  .sofa-highlight {
+    background: #f7f7f5;
+    border: 1px solid #e8e8e8;
+    border-left: 2px solid #cc2200;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin-top: 16px;
+  }
+  .sofa-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 10px;
+    color: #aaa;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+  .sofa-name {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .sofa-desc {
+    font-size: 11px;
+    color: #777;
+    line-height: 1.6;
+  }
+
+  /* ===================== PLANS ===================== */
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .plan-card {
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 26px 22px;
+    background: #fff;
+  }
+  .plan-card.featured { border: 2px solid #cc2200; }
+  .plan-badge {
+    display: inline-block;
+    background: #cc2200;
+    color: #fff;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    letter-spacing: 0.04em;
+  }
+  .plan-name {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .plan-price {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .plan-price span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #888;
+  }
+  .plan-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.7;
+    margin-top: 12px;
+  }
+
+  /* ===================== ACCESS ===================== */
+  .access-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-bottom: 36px;
+  }
+  .access-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .access-icon {
+    width: 38px;
+    height: 38px;
+    background: #111;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+    color: #cc2200;
+  }
+  .access-label {
+    font-size: 11px;
+    color: #aaa;
+    margin-bottom: 4px;
+    letter-spacing: 0.06em;
+  }
+  .access-value {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .access-sub {
+    font-size: 12px;
+    color: #888;
+    margin-top: 3px;
+  }
+  .maps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .map-wrap { display: flex; flex-direction: column; gap: 10px; }
+  .map-label {
+    font-size: 11px;
+    color: #aaa;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .map-frame {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e8e8e8;
+    height: 240px;
+  }
+  .map-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  /* ===================== CONTACT ===================== */
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    align-items: start;
+  }
+  .contact-info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .contact-info-card {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .contact-info-icon {
+    width: 42px;
+    height: 42px;
+    background: #111;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 20px;
+    color: #cc2200;
+  }
+  .contact-info-label {
+    font-size: 11px;
+    color: #aaa;
+    letter-spacing: 0.06em;
+    margin-bottom: 5px;
+  }
+  .contact-info-value {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .contact-info-sub {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+  }
+  .contact-box {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 30px;
+  }
+  .form-row { margin-bottom: 18px; }
+  .form-label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 7px;
+    display: block;
+    letter-spacing: 0.04em;
+  }
+  .form-input {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 11px 13px;
+    font-size: 14px;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #1a1a1a;
+    background: #fafafa;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus { border-color: #999; background: #fff; }
+  .form-textarea {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 11px 13px;
+    font-size: 14px;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #1a1a1a;
+    background: #fafafa;
+    height: 110px;
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-textarea:focus { border-color: #999; background: #fff; }
+  .form-submit {
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 13px 30px;
+    font-size: 13px;
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: pointer;
+    margin-top: 8px;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+  }
+  .form-submit:hover { background: #333; }
+
+  /* ===================== FOOTER ===================== */
+  .footer {
+    background: #111;
+    color: rgba(255,255,255,0.45);
+    padding: 36px 40px;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .footer-logo {
+    font-family: 'Barlow', sans-serif;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+  }
+  .footer-address {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 5px;
+  }
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width: 640px) {
+    .nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 60px 20px 56px; }
+    .hero h1 { font-size: 26px; }
+    .section { padding: 56px 20px; }
+    .maps-grid { grid-template-columns: 1fr; }
+    .contact-layout { grid-template-columns: 1fr; }
+    .footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">HOTEL HIGH STANDARD</div>
+  <div class="nav-links">
+    <a href="#rooms">客室</a>
+    <a href="#plans">プラン</a>
+    <a href="#access">アクセス</a>
+    <a href="#contact">お問い合わせ</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">CONTAINER HOTEL · JR成東駅徒歩10分 · 千葉県山武市</div>
+  <div class="hero-accent"></div>
+  <h1>コンテナというユニークな<br>ステイスタイル</h1>
+  <p class="hero-sub">こだわりのインダストリアルデザイン。完全独立型の客室で、非日常のくつろぎを体験してください。</p>
+  <a href="#rooms" class="btn-primary">客室を見る</a>
+  <a href="#contact" class="btn-outline">お問い合わせ</a>
+</section>
+
+<!-- FEATURES -->
+<section class="section section-alt">
+  <div class="section-label">Features</div>
+  <div class="section-title">3つのこだわり</div>
+  <div class="section-desc">旅やビジネスで、いつもと違うくつろぎ宿泊体験を。</div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">完全独立型のプライバシー</div>
+      <div class="feature-desc">1棟ごとに完全独立。隣室の音を気にせず、プライベートな時間をゆったりお過ごしいただけます。</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛏</div>
+      <div class="feature-title">充実した室内設備</div>
+      <div class="feature-desc">シモンズ製ベッド・ソファーベッド Dorothy2・無料Wi-Fi・冷蔵庫・電子レンジを完備。</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚗</div>
+      <div class="feature-title">駐車場直結でラクラク</div>
+      <div class="feature-desc">客室前に専用駐車スペース。スーツケースや大荷物もお部屋まで楽々移動できます。</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚶</div>
+      <div class="feature-title">駅近・好アクセス</div>
+      <div class="feature-desc">JR成東駅より徒歩10分。電車でもお車でも便利な立地です。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section class="section" id="rooms">
+  <div class="section-label">Rooms</div>
+  <div class="section-title">客室紹介</div>
+  <div class="section-desc">全10棟。コンテナからは想像できないくつろぎを体験できます。</div>
+  <div class="room-grid">
+    <div class="room-card">
+      <div class="room-img">
+        SINGLE ROOM
+        <div class="room-count-badge">全7棟</div>
+      </div>
+      <div class="room-info">
+        <div class="room-name">シングルルーム</div>
+        <div class="room-price">¥6,000〜 / 泊</div>
+        <div class="room-amenities-title">室内設備</div>
+        <div class="amenity-list">
+          <span class="amenity-tag">シモンズベッド</span>
+          <span class="amenity-tag">Wi-Fi無料</span>
+          <span class="amenity-tag">冷蔵庫</span>
+          <span class="amenity-tag">電子レンジ</span>
+          <span class="amenity-tag">空気清浄機</span>
+        </div>
+        <div class="sofa-highlight">
+          <div class="sofa-label">IN-ROOM SOFA</div>
+          <div class="sofa-name">ソファーベッド Dorothy2</div>
+          <div class="sofa-desc">星野リゾートなど国内高級リゾートホテルでも採用されている上質なソファーベッド。</div>
+        </div>
+      </div>
+    </div>
+    <div class="room-card">
+      <div class="room-img">
+        DOUBLE ROOM
+        <div class="room-count-badge">全3棟</div>
+      </div>
+      <div class="room-info">
+        <div class="room-name">ダブルルーム</div>
+        <div class="room-price">¥8,000〜 / 泊</div>
+        <div class="room-amenities-title">室内設備</div>
+        <div class="amenity-list">
+          <span class="amenity-tag">シモンズベッド</span>
+          <span class="amenity-tag">Wi-Fi無料</span>
+          <span class="amenity-tag">冷蔵庫</span>
+          <span class="amenity-tag">電子レンジ</span>
+          <span class="amenity-tag">空気清浄機</span>
+        </div>
+        <div class="sofa-highlight">
+          <div class="sofa-label">IN-ROOM SOFA</div>
+          <div class="sofa-name">ソファーベッド Dorothy2</div>
+          <div class="sofa-desc">星野リゾートなど国内高級リゾートホテルでも採用されている上質なソファーベッド。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="section section-alt" id="plans">
+  <div class="section-label">Plans</div>
+  <div class="section-title">宿泊プラン・料金</div>
+  <div class="section-desc">ビジネスから観光まで、幅広いニーズに対応したプランをご用意しています。</div>
+  <div class="plans-grid">
+    <div class="plan-card featured">
+      <div class="plan-badge">人気</div>
+      <div class="plan-name">素泊まりプラン</div>
+      <div class="plan-price">¥6,000<span> / 泊〜</span></div>
+      <div class="plan-desc">シンプルにお部屋だけご利用いただけるスタンダードプランです。</div>
+    </div>
+    <div class="plan-card">
+      <div class="plan-name">連泊割引プラン</div>
+      <div class="plan-price">¥5,500<span> / 泊〜</span></div>
+      <div class="plan-desc">2泊以上のご宿泊でお得になる長期滞在プランです。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="section" id="access">
+  <div class="section-label">Access</div>
+  <div class="section-title">アクセス</div>
+  <div class="divider"></div>
+  <div class="access-info">
+    <div class="access-item">
+      <div class="access-icon">📍</div>
+      <div>
+        <div class="access-label">住所</div>
+        <div class="access-value">千葉県山武市殿台257-2</div>
+      </div>
+    </div>
+    <div class="access-item">
+      <div class="access-icon">🚃</div>
+      <div>
+        <div class="access-label">電車</div>
+        <div class="access-value">JR成東駅より徒歩10分</div>
+        <div class="access-sub">JR総武本線・東金線</div>
+      </div>
+    </div>
+    <div class="access-item">
+      <div class="access-icon">🚗</div>
+      <div>
+        <div class="access-label">お車</div>
+        <div class="access-value">客室前に無料駐車スペースあり</div>
+      </div>
+    </div>
+    <div class="access-item">
+      <div class="access-icon">🕐</div>
+      <div>
+        <div class="access-label">チェックイン / アウト</div>
+        <div class="access-value">15:00 〜 / 〜 11:00</div>
+      </div>
+    </div>
+  </div>
+  <div class="maps-grid">
+    <div class="map-wrap">
+      <div class="map-label">📍 地図</div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3231!2d140.4172601!3d35.6031464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z5Y2D6Kqe55yM5bGx6KKL5biC!5e0!3m2!1sja!2sjp"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+    <div class="map-wrap">
+      <div class="map-label">🌐 ストリートビュー</div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!4v1780082111596!6m8!1m7!1sCnbLYW-_zp1s2JyXJpQnhQ!2m2!1d35.60314643014273!2d140.4172601286857!3f208.91657200225845!4f0.9064048739769532!5f0.7820865974627469"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section-alt" id="contact">
+  <div class="section-label">Contact</div>
+  <div class="section-title">お問い合わせ</div>
+  <div class="section-desc">ご不明な点やご要望がございましたら、お気軽にお問い合わせください。</div>
+  <div class="contact-layout">
+    <div class="contact-info-box">
+      <div class="contact-info-card">
+        <div class="contact-info-icon">📞</div>
+        <div>
+          <div class="contact-info-label">電話番号</div>
+          <div class="contact-info-value">0475-78-3732</div>
+          <div class="contact-info-sub">受付時間：9:00 〜 18:00</div>
+        </div>
+      </div>
+      <div class="contact-info-card">
+        <div class="contact-info-icon">✉️</div>
+        <div>
+          <div class="contact-info-label">メールアドレス</div>
+          <div class="contact-info-value" style="font-size:14px;">Hotel.hista@gmail.com</div>
+          <div class="contact-info-sub">24時間受付・順次ご返信いたします</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-box">
+      <div class="form-row">
+        <label class="form-label">お名前</label>
+        <input class="form-input" type="text" placeholder="山田 太郎">
+      </div>
+      <div class="form-row">
+        <label class="form-label">メールアドレス</label>
+        <input class="form-input" type="email" placeholder="example@email.com">
+      </div>
+      <div class="form-row">
+        <label class="form-label">お問い合わせ内容</label>
+        <textarea class="form-textarea" placeholder="ご質問・ご要望をご記入ください"></textarea>
+      </div>
+      <button class="form-submit">送信する</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <div class="footer-logo">HOTEL HIGH STANDARD</div>
+    <div class="footer-address">〒289-1325 千葉県山武市殿台257-2　TEL: 0475-78-3732</div>
+  </div>
+  <div>© 2026 Hotel High Standard. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
