@@ -48,10 +48,18 @@
 
   /* ===================== HERO ===================== */
   .hero {
-    background: #111;
+    background: #111 url('images/photo7.jpg') no-repeat right center / cover;
     color: #fff;
     padding: 88px 40px 80px;
+    position: relative;
   }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.72) 40%, rgba(0,0,0,0.2) 100%);
+  }
+  .hero > * { position: relative; }
   .hero-badge {
     display: inline-block;
     border: 1px solid rgba(255,255,255,0.25);
